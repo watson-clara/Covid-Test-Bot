@@ -5,16 +5,18 @@ from selenium.webdriver.chrome.options import Options #added for a quicker confi
 class covidBot:
 
     def __init__(self):
+        """ initiatlizing function"""
         self.zip = "89052"
         self.dob = "03/24/2000"
         self.dos = "12/21/2020"
         options = Options()
-        options.add_argument("no-sandbox")#disable sandboxing, really only needed in docker
-        #options.add_argument("headless")#for when you have it all working
-        self.driver = webdriver.Chrome()
+        options.add_argument("no-sandbox") #disable sandboxing, really only needed in docker
+        #options.add_argument("headless") #for when you have it all working
+        self.driver = webdriver.Chrome() # calls webdriver
         self.goZip()
     
     def goZip(self):
+        """ opens the website and fills in the information"""
         self.driver.get("https://www.cvs.com/minuteclinic/covid-19-testing")
         sleep(2)
         self.driver.find_element_by_name('zip-control').send_keys(self.zip)
